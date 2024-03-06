@@ -1,0 +1,28 @@
+##### splitter #####
+[/home/kasm-user/workspace/file_splitter/file-splitter/output/f1]
+[config1.yml]
+version: 2
+
+models:
+  - materialization: view
+
+{% endblock -%}
+
+##### splitter #####
+[/home/kasm-user/workspace/file_splitter/file-splitter/output/f2]
+[config2.yml]
+version: 2
+
+models:
+  - name: {{ model.model_name }} 
+    columns:
+    {%- for column in model.select_expr.values() %}
+    - name: {{ column['name'] }}
+      {%- if model.primary_keys is not none and column['name'] in model.primary_keys %}
+      tests:
+        - unique
+        - not null
+      {% endif -%}
+    {%- endfor %}   
+{% endfor -%}
+{% endblock %}
