@@ -1,31 +1,8 @@
 from dataclasses import dataclass, field
+from lib.file import File
 from typing import List, Dict
 import os
 import sys
-
-
-@dataclass
-class File:
-    """
-        Represents a single file
-    """
-
-    # File metadata
-    # Body is a List of strings to be outputted
-    body:       List = field(default_factory=lambda: [])
-    filepath:   str  = None
-    filename:   str  = None 
-
-    # Write the contents of the body to the file
-    def write(self):
-
-        if not os.path.exists(self.filepath):
-             os.makedirs(self.filepath)
-        
-        output = os.path.join(self.filepath, self.filename)
-
-        with open(output, 'w') as o:
-            o.write(self.body)
 
 @dataclass
 class Splitter:
@@ -61,6 +38,16 @@ class Splitter:
 
         for file in self.file_list:
             file.write()
+
+    # Performs the following processes
+    # 1. Opens the file
+    # 2. Splits it into spearate files
+    # 3. Writes to output
+    # Function is meant to be an all in one solution
+    def process(self):
+        self.open()
+        self.split()
+        self.write()
 
     # Reads the data and sets the metadata based on the header
     # Header info should be encapsulated with square brackets and be the first couple of lines of the data
