@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - materialization: view
+
+{% endblock -%}
