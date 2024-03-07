@@ -1,7 +1,6 @@
-{##### common.yml #####}
-{%- block common_yaml -%}
-[{{ config_location }}]
-[config.yml]
+##### splitter #####
+[test/output/f1]
+[config1.yml]
 version: 2
 
 models:
@@ -9,13 +8,9 @@ models:
 
 {% endblock -%}
 
-{##### end of common-yml #####}
-{##### single_model.yml #####}
-{%- block single_yaml -%}
-{%- for model in models %}
-#### split ####
-[{{ model.test_path}}]
-[{{ model.test_name }}]
+##### splitter #####
+[test/output/f2]
+[config2.yml]
 version: 2
 
 models:
