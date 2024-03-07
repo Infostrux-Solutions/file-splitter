@@ -14,7 +14,7 @@ class Splitter:
     # Sets the:
     # - default spliiter syntax
     # - default output path
-    # - data packet ->  if you have a custom data stream and want to customize the handling 
+    # - data packet ->  if you have a custom data stream and want to customize the handling
     delimiter:           str = '##### splitter #####'
     input_file:          str = None
     raw_data:            str = None
@@ -59,47 +59,45 @@ class Splitter:
 
         filepath = ''
         filename = ''
-        body     = '' 
+        body     = ''
 
-        metadata_counter = 0   
-        
+        metadata_counter = 0
+
         # Split the raw_data into lines
         raw_data_lines = raw_data.splitlines(keepends=False)
 
         for ndx, line in enumerate(raw_data_lines):
-            
+
             if trim_whitespace:
                 if metadata_counter == 0 and line.strip() == '':
                     continue
 
             # next two lines are headers
             if metadata_counter == 0:
-                filepath = line.strip('[').strip(']') 
+                filepath = line.strip('[').strip(']')
                 metadata_counter += 1
             elif metadata_counter == 1:
-                filename = line.strip('[').strip(']') 
+                filename = line.strip('[').strip(']')
                 metadata_counter +=1
             # keep everything else
-            else: 
+            else:
                 body = '\n'.join(raw_data_lines[ndx:])
                 break
-  
+
         file = File(filepath = filepath, filename = filename, body = body)
         return file
 
     # Splits by the delimiter
     def split(self):
-        
-        if self.raw_data is None: 
+
+        if self.raw_data is None:
             sys.exit("No data detected. Make sure you have opened the file or check your file's contents.")
 
         for ndx, chunk in enumerate(self.raw_data.split(self.delimiter)):
-            
+
             # Skip empty files
             if chunk.strip() == '':
                 continue
-            
+
             file = self.read_header(raw_data = chunk)
             self.file_list.append(file)
-
-    

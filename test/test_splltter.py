@@ -10,7 +10,7 @@ def get_config(num):
         filename = 'test/output/f1/config1.yml'
     elif num == 2:
         filename = 'test/output/f2/config2.yml'
-    
+
     with open(filename, 'r') as f:
         data = f.read()
 
@@ -25,6 +25,6 @@ def test_split():
 def test_metadata():
     s = split_obj()
     s.open()
-    s.split()   
+    s.split()
     assert s.file_list[0].body == get_config(1)
     assert s.file_list[1].body == get_config(2)

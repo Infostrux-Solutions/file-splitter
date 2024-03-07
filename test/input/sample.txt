@@ -14,7 +14,7 @@ models:
 version: 2
 
 models:
-  - name: {{ model.model_name }} 
+  - name: {{ model.model_name }}
     columns:
     {%- for column in model.select_expr.values() %}
     - name: {{ column['name'] }}
@@ -23,6 +23,6 @@ models:
         - unique
         - not null
       {% endif -%}
-    {%- endfor %}   
+    {%- endfor %}
 {% endfor -%}
 {% endblock %}
