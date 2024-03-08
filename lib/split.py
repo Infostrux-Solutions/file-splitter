@@ -15,7 +15,8 @@ class Splitter:
     # - default spliiter syntax
     # - default output path
     # - data packet ->  if you have a custom data stream and want to customize the handling
-    delimiter:           str = '##### splitter #####'
+    default_delimiter:   str = '##### splitter #####'
+    delimiter:           str = None
     input_file:          str = None
     raw_data:            str = None
     default_output_path: str = None
@@ -93,7 +94,12 @@ class Splitter:
         if self.raw_data is None:
             sys.exit("No data detected. Make sure you have opened the file or check your file's contents.")
 
-        for ndx, chunk in enumerate(self.raw_data.split(self.delimiter)):
+        if self.delimiter is None:
+            delimiter = self.default_delimiter
+        else:
+            delimiter = self.delimiter
+
+        for ndx, chunk in enumerate(self.raw_data.split(delimiter)):
 
             # Skip empty files
             if chunk.strip() == '':
