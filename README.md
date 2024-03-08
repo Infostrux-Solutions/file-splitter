@@ -51,4 +51,6 @@ This is file 2!
 ```
 
 ## Delimiter Notes:
-The delimiter you pass in specifies the string that will indicate where a file split should occur. By default this is set to `##### splitter #####`. Alternatively you can override this by passing in your down custom delimiter, either as a commandline argument (`-d DELIMITER`) or by passing it during class creation (`Splitter(input_file='file1.txt, delimieter='my_new_delimiter')`)
+The delimiter you pass in specifies the string that will indicate where a file split should occur. By default this is set to `##### splitter #####`. 
+
+Alternatively you can override this by passing in your down custom delimiter, either as a commandline argument (`-d DELIMITER`) or by passing it during class creation (`Splitter(input_file='file1.txt, delimieter='my_new_delimiter')`)
