@@ -110,7 +110,7 @@ class Splitter:
             self.file_list.append(file)
 
 
-def run():
+def main():
 
     parser = argparse.ArgumentParser(description = 'Split a file by a delimiter')
     parser.add_argument('-f', '--file', help = 'The file to be split', required = True)
@@ -122,4 +122,4 @@ def run():
     s.process()
 
 if __name__ == '__main__':
-    run()
+    main()

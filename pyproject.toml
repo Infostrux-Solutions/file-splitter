@@ -58,7 +58,7 @@ test = [
 "Source" = "https://github.com/Infostrux-Solutions/file-splitter"
 
 [project.scripts]
-file-splitter = "jinja_template_renderer:main"
+file-splitter = "file_splitter:main"
 
 
 [tool.setuptools]
