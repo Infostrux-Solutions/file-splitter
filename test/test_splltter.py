@@ -1,4 +1,4 @@
-from lib.split import Splitter
+from file_splitter import Splitter
 import pytest
 
 def split_obj():

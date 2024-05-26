@@ -1,30 +1,41 @@
 # File-Splitter
 
 ## Background
-This is a Python Utility that can split a large file into smaller files with given metadata
-A Python utility that can split a large file into smaller files with given metadata
+This is a Python Utility that can split a large file into smaller files. 
+The files are split on lines that match a delimiter. 
+The destination file path and a destination file name is expected in lines that follow each delimiter. 
 
 ## Usage
 You can use the splitter either as a module or as a command line utility:
 
 ## Installation
-Install the requirements file via (it is recommeneded to run this in a Python Virtual Environment):
+Requires Python 3.8 or higher.
 
-```
-pip install -r requirements.txt
-```
+1. Create a virtual environment.  (Optional)
+  ```
+  python3 -m venv .venv
+  source .venv/bin/activate
+  ```
+2. Run 
+  ```
+  pip install https://github.com/Infostrux-Solutions/file-splitter
+  ```
+   For local development, run 
+  ```
+  pip install -e .[dev,test]
+  ```
+
 ### Command line Usage
 To run the splitter in the command line, pass in the name of the file (and optionally the delimiter to split by):
 ```
-python main.py -f [FILE] -d [DELIMITER]
+file-splitter -f [FILE] -d [DELIMITER]
 ```
 This will split the file and output the newly created files at their destination that was specified by the metadata. If the path to the output does not exist the program will automatically create the needed folders.
 
 ### As a module
-To use it as a module you can simply copy the `file.py` and `split.py` files in the `lib/` folder and import as such in your project:
 
 ```
-from lib.split import Splitter
+from file_splitter import Splitter
 ```
 
 You can then run the `Splitter` class by instantiating a new instance and calling the `process()` module:

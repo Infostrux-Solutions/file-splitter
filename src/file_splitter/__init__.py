@@ -1,8 +1,9 @@
 from dataclasses import dataclass, field
-from lib.file import File
+from file_splitter.file import File
 from typing import List, Dict
 import os
 import sys
+import argparse
 
 @dataclass
 class Splitter:
@@ -107,3 +108,18 @@ class Splitter:
 
             file = self.read_header(raw_data = chunk)
             self.file_list.append(file)
+
+
+def run():
+
+    parser = argparse.ArgumentParser(description = 'Split a file by a delimiter')
+    parser.add_argument('-f', '--file', help = 'The file to be split', required = True)
+    parser.add_argument('-d','--delimiter', help = 'The delimiter to split on', required = False)
+
+    args = parser.parse_args()
+
+    s = Splitter(input_file = args.file, delimiter = args.delimiter)
+    s.process()
+
+if __name__ == '__main__':
+    run()
