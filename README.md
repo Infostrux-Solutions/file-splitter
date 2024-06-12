@@ -45,9 +45,10 @@ s.process()
 ```
 
 ## Formatting
-The splitter takes in a file that is separated by a delimiter that indicates the start of a new page. The first two non empty lines of a file is considered to be the metadata of the file: they represent the output location and name of the file. An example is shown below (note the metadata is encapsulated with square brackets):
+The splitter takes in a file that has pages prefixed by a delimiter. The first two non empty lines of each page are considered to be the metadata of the page: they represent the output location and name of the output file where the content of the page will be written. An example is shown below (note the metadata is encapsulated with square brackets):
 
 ```
+##### splitter #####
 [/output/f1]
 [file1.txt]
 

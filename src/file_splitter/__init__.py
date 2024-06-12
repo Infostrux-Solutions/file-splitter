@@ -102,8 +102,8 @@ class Splitter:
 
         for ndx, chunk in enumerate(self.raw_data.split(delimiter)):
 
-            # Skip empty files
-            if chunk.strip() == '':
+            # Skip first chunk and empty files
+            if ndx == 0 or chunk.strip() == '':
                 continue
 
             file = self.read_header(raw_data = chunk)

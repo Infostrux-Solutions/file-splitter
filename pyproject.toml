@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "file-splitter"
-version = "1.0.3"
+version = "1.0.4"
 description = "Given a separator string, split file into multiple files."
 readme = "README.md"
 requires-python = ">=3.8"
