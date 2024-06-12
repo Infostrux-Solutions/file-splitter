@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: {{ model.model_name }}
+    columns:
+    {%- for column in model.select_expr.values() %}
+    - name: {{ column['name'] }}
+      {%- if model.primary_keys is not none and column['name'] in model.primary_keys %}
+      tests:
+        - unique
+        - not null
+      {% endif -%}
+    {%- endfor %}
+{% endfor -%}
+{% endblock %}
